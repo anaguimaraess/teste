@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style.css">
+    <title>G A M E S</title>
+</head>
+<body>
+<h1>GAMES</h1>
+<div class="content">
+    <form th:action="@{/jogos/avaliar}" method="POST" th:object="${jogo}">
+        <input type="hidden" name="jogoId" th:field="*{id}">
+        <label for="nota">Nota:</label>
+        <input type="number" id="nota" name="nota" placeholder="Nota" required>
+        <label for="avaliacao">Comentário:</label>
+        <textarea id="avaliacao" name="avaliacao" placeholder="Comentário" required></textarea>
+        <button type="submit" class="btn blue">Avaliar</button>
+    </form>
+</div>
+
+
+
+</body>
+</html>

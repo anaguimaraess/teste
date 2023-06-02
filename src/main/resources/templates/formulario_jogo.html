@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style.css">
+    <title>G A M E S</title>
+</head>
+<body>
+    <h1>GAMES</h1>
+
+
+    <div class="content">
+        <form action="/jogos" method="POST">
+            <input type="hidden" name="_csrf" th:value="${_csrf.token}">
+            <input type="text" placeholder="nome" name="nome">
+            <textarea name="descricao"placeholder="descrição do jogo" cols="30" rows="10"></textarea>
+            <div class="actions">
+                <a class="btn" href="/jogos">cancelar</a>
+                <button class="btn blue">salvar</button>
+            </div>
+        </form>
+    </div>
+
+
+
+</body>
+</html>

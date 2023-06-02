@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>G A M E S</title>
+</head>
+<body>
+
+<nav>
+    <a href="/logout" title="sair">
+        <span class="material-icons">exit_to_app</span>
+    </a>
+</nav>
+
+<h1>GAMES</h1>
+
+<a class="btn red" href="/jogos/cadastrar">cadastrar jogo</a>
+
+<span class="alert" th:text="${mensagem}" th:if="${mensagem != null}"></span>
+
+<div class="tasks">
+    <div class="card-task" th:each="jogo : ${jogos}">
+        <h3 th:text="${jogo.nome}"></h3>
+        <p th:text="${jogo.descricao}"></p>
+        <span th:if="${jogo.avaliacao != null}">
+                <strong>Avaliação:</strong>
+                <span th:text="${jogo.avaliacao.nota}"></span>/5
+                <br>
+                <strong>Comentário:</strong>
+                <span th:text="${jogo.avaliacao.avaliacao}"></span>
+            </span>
+
+            <form action="/jogos" method="POST">
+                <input type="hidden" name="_csrf" th:value="${_csrf.token}" />
+                <input type="hidden" name="_method" value="DELETE" />
+
+                <input type="hidden" name="id" th:value="${jogo.id}" />
+
+                <button class="btn btn-sm red">
+                    <span class="material-icons">delete</span>
+                </button>
+            </form>
+        <form action="/formulario_avaliacao" method="GET">
+            <input type="hidden" name="jogoId" th:value="${jogo.id}">
+            <button class="btn btn-sm blue" type="submit">
+                <span class="material-icons">star</span>
+            </button>
+        </form>
+
+
+    </div>
+    </div>
+
+</body>
+</html>
